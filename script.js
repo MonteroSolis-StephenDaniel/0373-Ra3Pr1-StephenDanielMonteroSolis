@@ -66,3 +66,36 @@ function validarFormulari() {
 
   return true;
 }
+
+
+function calcularNotaFinal(examen, practiques, actitud) {
+  return (examen * 0.6) + (practiques * 0.3) + (actitud * 0.1);
+}
+
+
+function afegirAlumne() {
+  let nom = inputNom.value.trim();
+  let examen = parseFloat(inputExamen.value);
+  let practiques = parseFloat(inputPractiques.value);
+  let actitud = parseFloat(inputActitud.value);
+
+  let notaFinal = calcularNotaFinal(examen, practiques, actitud);
+
+  let alumne = {
+    nom: nom,
+    examen: examen,
+    practiques: practiques,
+    actitud: actitud,
+    notaFinal: notaFinal
+  };
+
+  alumnes.push(alumne);
+
+  inputNom.value = "";
+  inputExamen.value = "";
+  inputPractiques.value = "";
+  inputActitud.value = "";
+
+  mostrarCorrecte("Alumne afegit correctament!");
+  mostrarAlumnes();
+}
