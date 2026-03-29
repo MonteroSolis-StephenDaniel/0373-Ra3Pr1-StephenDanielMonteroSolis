@@ -99,3 +99,27 @@ function afegirAlumne() {
   mostrarCorrecte("Alumne afegit correctament!");
   mostrarAlumnes();
 }
+
+
+function mostrarAlumnes() {
+  cosTaula.innerHTML = "";
+
+  for (let i = 0; i < alumnes.length; i++) {
+    let alumne = alumnes[i];
+    let estat = alumne.notaFinal >= 5 ? "Aprovat" : "Suspès";
+    let classEstat = alumne.notaFinal >= 5 ? "aprovat" : "suspes";
+
+    let fila = `
+      <tr>
+        <td>${alumne.nom}</td>
+        <td>${alumne.examen.toFixed(2)}</td>
+        <td>${alumne.practiques.toFixed(2)}</td>
+        <td>${alumne.actitud.toFixed(2)}</td>
+        <td>${alumne.notaFinal.toFixed(2)}</td>
+        <td class="${classEstat}">${estat}</td>
+      </tr>
+    `;
+
+    cosTaula.innerHTML += fila;
+  }
+}
