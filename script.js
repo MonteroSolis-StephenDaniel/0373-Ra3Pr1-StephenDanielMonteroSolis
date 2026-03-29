@@ -123,3 +123,35 @@ function mostrarAlumnes() {
     cosTaula.innerHTML += fila;
   }
 }
+
+
+function ordenarAlumnes(ordre) {
+  if (ordre === "asc") {
+    alumnes.sort(function(a, b) {
+      return a.notaFinal - b.notaFinal;
+    });
+  } else {
+    alumnes.sort(function(a, b) {
+      return b.notaFinal - a.notaFinal;
+    });
+  }
+  mostrarAlumnes();
+}
+
+
+formulari.addEventListener("submit", function(event) {
+  event.preventDefault();
+  netejarMissatge();
+  if (validarFormulari()) {
+    afegirAlumne();
+  }
+});
+
+btnAsc.addEventListener("click", function() {
+  ordenarAlumnes("asc");
+});
+
+btnDesc.addEventListener("click", function() {
+  ordenarAlumnes("desc");
+});
+
